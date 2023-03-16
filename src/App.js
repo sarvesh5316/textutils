@@ -4,6 +4,10 @@ import TextForm from "./Components/TextForm";
 import About from "./Components/About";
 import React, { useState } from "react";
 import Alert from "./Components/Alert";
+import './App.css';
+import Footer from "./Components/Footer";
+// import { GiHearts } from 'react-icons/gi';
+// import { FaCopyright } from 'react-icons/fa';
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -32,26 +36,32 @@ function App() {
   };
   return (
     <>
-      <Router>
-        <Navbar
-          title="TextUtils"
-          mode={mode}
-          toggleMode={toggleMode}
-          key={new Date()}
-        />
-        <Alert alert={alert} />
-        <div className="container my-3">
-          <Routes>
-            <Route exact path="/About" element={<About mode={mode} />} />
-            <Route exact path="/" element={<TextForm
-              showAlert={showAlert}
-              heading="Try TextUtils - word counter, character counter, remove extra spaces"
-              mode={mode}
-            />} />
-          </Routes>
-        </div>
-      </Router>
+      <div className="App">
+        <Router>
+          <Navbar
+            title="TextManipulator"
+            mode={mode}
+            toggleMode={toggleMode}
+            key={new Date()}
+          />
+          <Alert alert={alert} />
+          <div className="container my-3">
+            <Routes>
+              <Route exact path="/About" element={<About mode={mode} />} />
+              <Route exact path="/" element={<TextForm
+                showAlert={showAlert}
+                heading="Try! TextManipulator - Word & Character counter, UpperCase Converter, Lowercase Converter, Extra Spaces Remover, Calculates Time taken to read Given Paragraph. "
+                mode={mode}
+              />} />
+            </Routes>
+          </div>
+        </Router>
+      </div>
+      <div className="footer">
+        <Footer />
+      </div>
     </>
+
   );
 }
 
